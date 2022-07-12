@@ -14,7 +14,7 @@ namespace LibDynamics
 			double Force_x;
 			double mass;
 			double time;
-			double d_time
+			double d_time;
 		};
 	
 		struct Output

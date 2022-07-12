@@ -33,9 +33,9 @@ int main()
     while (time_moment < end_time)
     {
         LibDynamics::Dynamics; //input coord_x, Vel_x, Force_x, mass, time_moment, d_time
-            // time_moment = output::time
-            // Vel_x = output::Vel_x
-            // coord_x = output::coord_x
+            // time_moment = output.time
+            // Vel_x = output.Vel_x
+            // coord_x = output.coord_x
 
         // функция фывода в файл
         // if (time_moment % 0.1 == 0 )
