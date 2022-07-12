@@ -6,33 +6,53 @@
 
 void test()
 {
-    LibDynamics::Dynamics::Input input{0,0,0,0,0,0};
+    LibDynamics::Dynamics::Input input;
     LibDynamics::Dynamics::Output output{0,0,0};
+    input.coord_x = 0;
+    input.Vel_x = 0;
+    input.Force_x = 300;
+    input.mass = 50;
+    input.time = 0;
+    input.d_time = 0.01;
+
+    double end_time = 30; // с
+
+    std::cout << "\nx = " << input.coord_x << " Vx = " << input.Vel_x << " t = " << input.time << std::endl;
+    
     LibDynamics::Dynamics calculate;
-    calculate.iteration(input, output);
+    calculate.run(end_time, input, output);
+
+    std::cout << "\n x = " << output.coord_x;
+    std::cout << " Vx = " << output.Vel_x;
+    std::cout << " t = " << output.time << std::endl;
+
+
 }
 
 int main()
 {
     system("chcp 1251>nul"); // windows-кодировка в консоли
+    test();
+
+    return 0; 
 
     // TODO вынести начальные условия в отдельный файл
     // TODO создать объект класса Мат.точка и передавать Динамике его, а не отдаельные переменные
-    double mass = 50; // кг
-    double force_x = 300; // Н
-    double coord_x0 = 0; // м
-    double vel_x0 = 0; // м/с
-    double time_moment0 = 0; // c
-    double end_time = 30; // с
+    // double mass = 50; // кг
+    // double force_x = 300; // Н
+    // double coord_x0 = 0; // м
+    // double vel_x0 = 0; // м/с
+    // double time_moment0 = 0; // c
+    // double end_time = 30; // с
     
 
-    double vel_x = vel_x0;
-    double coord_x = coord_x0;
-    double time_moment = time_moment0;
+    // double vel_x = vel_x0;
+    // double coord_x = coord_x0;
+    // double time_moment = time_moment0;
 
-    while (time_moment < end_time)
-    {
-        LibDynamics::Dynamics; //input coord_x, Vel_x, Force_x, mass, time_moment, d_time
+    //while (time_moment < end_time)
+    //{
+    //    LibDynamics::Dynamics; //input coord_x, Vel_x, Force_x, mass, time_moment, d_time
             // time_moment = output.time
             // Vel_x = output.Vel_x
             // coord_x = output.coord_x
@@ -41,11 +61,11 @@ int main()
         // if (time_moment % 0.1 == 0 )
 
 
-    }
+    //}
 
-    std::cout << (time_moment, vel_x, coord_x - coord_x0) << std::endl;
+    // std::cout << (time_moment, vel_x, coord_x - coord_x0) << std::endl;
                       
-                           //test();
+                           //tes-t();
     
 }
 

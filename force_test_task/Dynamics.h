@@ -5,7 +5,7 @@ namespace LibDynamics
 	class Dynamics
 	{
 	public:
-		explicit Dynamics();
+		explicit Dynamics()=default;
 		~Dynamics() = default;
 		struct Input
 		{
@@ -24,6 +24,8 @@ namespace LibDynamics
 			double time;
 		};
 		void iteration(const Input& input, Output& output);
+
+		void run(double end_time, Input& input, Output& output);
 
 	private:
 
