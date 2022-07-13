@@ -1,31 +1,21 @@
 #pragma once
-namespace LibDynamics
+namespace Lib_Dyn_data
 {
-
-	class Dynamics
+	class mater_point
 	{
 	public:
-		explicit Dynamics()=default;
-		~Dynamics() = default;
-		struct Input
+		explicit mater_point()=default;
+		~mater_point() = default;
+		struct DynData
 		{
 			double coord_x;
-			double Vel_x;
-			double Force_x;
-			double mass;
-			double time;
-			double d_time;
+			double vel_x;
+			double accel_x;
 		};
 	
-		struct Output
-		{
-			double coord_x;
-			double Vel_x;
-			double time;
-		};
-		void iteration(const Input& input, Output& output);
+		void iteration(double d_time, DynData& dyn_data);
 
-		void run(double end_time, Input& input, Output& output);
+		void run(double time, double d_time, double end_time, DynData& dyn_data);
 
 	private:
 

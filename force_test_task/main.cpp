@@ -1,75 +1,41 @@
 ﻿// force_test_task.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
 
 #include <iostream>
 #include "Dynamics.h"
 
-void test()
+void start()
 {
-    LibDynamics::Dynamics::Input input;
-    LibDynamics::Dynamics::Output output{0,0,0};
-    input.coord_x = 0;
-    input.Vel_x = 0;
-    input.Force_x = 300;
-    input.mass = 50;
-    input.time = 0;
-    input.d_time = 0.01;
-
-    double end_time = 30; // с
-
-    std::cout << "\nx = " << input.coord_x << " Vx = " << input.Vel_x << " t = " << input.time << std::endl;
+    Lib_Dyn_data::mater_point::DynData dyn_data;
     
-    LibDynamics::Dynamics calculate;
-    calculate.run(end_time, input, output);
+    double time = 0;
+    double d_time = 0.01;
+    double end_time = 30; // с
+    double mass = 50; // кг
+    double force_x = 300; // Н
 
-    std::cout << "\n x = " << output.coord_x;
-    std::cout << " Vx = " << output.Vel_x;
-    std::cout << " t = " << output.time << std::endl;
+    dyn_data.coord_x = 0;
+    dyn_data.vel_x = 0;
+    dyn_data.accel_x = force_x / mass;
+   
+      
+    Lib_Dyn_data::mater_point calculate;
+    calculate.run(time, d_time, end_time, dyn_data);
 
-
+    std::cout << "\nx = " << dyn_data.coord_x << "  Vx = " << dyn_data.vel_x << "  t = " << time;
 }
 
 int main()
 {
     system("chcp 1251>nul"); // windows-кодировка в консоли
-    test();
+    start();
 
     return 0; 
 
     // TODO вынести начальные условия в отдельный файл
-    // TODO создать объект класса Мат.точка и передавать Динамике его, а не отдаельные переменные
-    // double mass = 50; // кг
-    // double force_x = 300; // Н
-    // double coord_x0 = 0; // м
-    // double vel_x0 = 0; // м/с
-    // double time_moment0 = 0; // c
-    // double end_time = 30; // с
-    
-
-    // double vel_x = vel_x0;
-    // double coord_x = coord_x0;
-    // double time_moment = time_moment0;
-
-    //while (time_moment < end_time)
-    //{
-    //    LibDynamics::Dynamics; //input coord_x, Vel_x, Force_x, mass, time_moment, d_time
-            // time_moment = output.time
-            // Vel_x = output.Vel_x
-            // coord_x = output.coord_x
-
-        // функция фывода в файл
-        // if (time_moment % 0.1 == 0 )
-
-
-    //}
-
-    // std::cout << (time_moment, vel_x, coord_x - coord_x0) << std::endl;
-                      
-                           //tes-t();
-    
+   
+    // функция фывода в файл  if (time_moment % 0.1 == 0 )
+ 
 }
-
-
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"

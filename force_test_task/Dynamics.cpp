@@ -1,24 +1,19 @@
 #include "Dynamics.h"
-namespace LibDynamics
+namespace Lib_Dyn_data
 {
-	void Dynamics::iteration(const Dynamics::Input& input, Dynamics::Output& output)
+	void mater_point::iteration(double d_time, mater_point::DynData& dyn_data)
 	{
-		double acceleration_x = input.Force_x / input.mass ;
-		output.Vel_x = input.Vel_x + acceleration_x * input.d_time;
-		// output.coord_x = input.coord_x + ((input.Vel_x + output.Vel_x) / 2) * input.d_time;
-		output.coord_x = input.coord_x + input.Vel_x * input.d_time;
-		
-		output.time = input.time + input.d_time;
+		dyn_data.vel_x += dyn_data.accel_x * d_time;
+		//output.coord_x = input.coord_x + ((input.Vel_x + output.Vel_x) / 2) * input.d_time;
+		dyn_data.coord_x += dyn_data.vel_x * d_time;
 	}
 
-	void Dynamics::run(double end_time, Input& input, Output& output)
+	void mater_point::run(double time, double d_time, double end_time, mater_point::DynData& dyn_data)
 	{
-		while (input.time < end_time)
+		while (time <= end_time)
 		{
-			iteration(input, output);
-			input.coord_x = output.coord_x;
-			input.Vel_x = output.Vel_x;
-			input.time = output.time;
+			time += d_time;
+			iteration (d_time, dyn_data);
 		}
 	}
 }
