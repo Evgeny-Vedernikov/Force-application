@@ -14,7 +14,7 @@ namespace LibMatPoint
 	
 		void iteration(double dt, KinValues& kin);
 
-		void run(double time, double dt, double end_time, KinValues& kin);
+		double time_run(double time, double dt, double end_time, KinValues& kin);
 
 	private:
 		double a_dt;

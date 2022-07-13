@@ -1,3 +1,6 @@
+#include <iostream>
+#include <fstream>
+#include <math.h>
 #include "MatPoint.h"
 namespace LibMatPoint
 {
@@ -11,12 +14,35 @@ namespace LibMatPoint
 		kin.coord_x += kin.vel_x * dt;
 	}
 
-	void MatPoint::run(double time, double dt, double end_time, MatPoint::KinValues& kin)
+	void data_to_file(double time, double dt, double f_interval, MatPoint::KinValues& kin)
 	{
+		if ((time / f_interval - int(time / f_interval)) * f_interval < dt / 8)
+		{
+			std::ofstream out;          // поток для записи
+			out.open("record.txt"); // окрываем файл для записи
+			if (out.is_open())
+			{
+				out << "t = " << time
+					<< " ,    x = " << kin.coord_x
+					<< " ,    V = " << kin.vel_x << std::endl;
+			}
+			std::cout << "t = ," << time
+				<< ",    x = ," << kin.coord_x 
+				<< ",    V = ," << kin.vel_x << std::endl;
+		}
+	}
+
+
+	double MatPoint::time_run(double time, double dt, double end_time, MatPoint::KinValues& kin)
+	{
+		
 		while (time <= end_time)
 		{
 			time += dt;
 			iteration (dt, kin);
+			data_to_file(time, dt, 0.1, kin);
+			
 		}
+		return (time);
 	}
-}
+} 

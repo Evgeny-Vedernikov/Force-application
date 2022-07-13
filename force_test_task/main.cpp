@@ -1,6 +1,11 @@
 ﻿#include <iostream>
 #include "MatPoint.h"
 
+void data_to_file(double time, double f_inter, double dt, double v, double s)
+{
+    std::cout << "t, v, s" << time, v, s;
+}
+
 void start()
 {
     LibMatPoint::MatPoint::KinValues kin_values;
@@ -11,39 +16,30 @@ void start()
     double vel_x_0 = 0; // м
     double dt = 0.01; // с
     double t0 = 0; // с
-    double end_time = 30; // с
+    float end_time = 30; // с
+    float f_interval = 0.1; // с
 
     double time = t0;
     kin_values.coord_x = coord_x_0;
     kin_values.vel_x = vel_x_0;
 
-    LibMatPoint::MatPoint calculate (force_x / mass, dt);
-    calculate.run(time, dt, end_time, kin_values);
+    LibMatPoint::MatPoint calculate (force_x / mass, dt);  // ____ calculate ?
+    time = calculate.time_run(time, dt, end_time, kin_values);
 
     std::cout << "\nx = " << kin_values.coord_x 
         << "  Vx = " << kin_values.vel_x 
         << "  t = " << time;
 }
 
-void main()
+
+int main()
 {
     system("chcp 1251>nul"); // windows-кодировка в консоли
     start();
 
-
+    return 0;
     // TODO вынести начальные условия в отдельный файл
 
     // функция фывода в файл  if (time_moment % 0.1 == 0 )
 
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
