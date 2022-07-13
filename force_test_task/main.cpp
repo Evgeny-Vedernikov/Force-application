@@ -1,40 +1,41 @@
-﻿// force_test_task.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-
-#include <iostream>
-#include "Dynamics.h"
+﻿#include <iostream>
+#include "MatPoint.h"
 
 void start()
 {
-    Lib_Dyn_data::mater_point::DynData dyn_data;
-    
-    double time = 0;
-    double d_time = 0.01;
-    double end_time = 30; // с
+    LibMatPoint::mat_point::DynValues dyn_values;
+
     double mass = 50; // кг
     double force_x = 300; // Н
+    double coord_x_0 = 0; // м
+    double vel_x_0 = 0; // м
+    double dt = 0.01;
+    double t0 = 0;
+    double end_time = 30; // с
 
-    dyn_data.coord_x = 0;
-    dyn_data.vel_x = 0;
-   
-   
-      
-    Lib_Dyn_data::mater_point calculate (force_x / mass, d_time);
-    calculate.run(time, d_time, end_time, dyn_data);
+    double time = t0;
 
-    std::cout << "\nx = " << dyn_data.coord_x << "  Vx = " << dyn_data.vel_x << "  t = " << time;
+    dyn_values.coord_x = coord_x_0;
+    dyn_values.vel_x = vel_x_0;
+
+    LibMatPoint::mat_point calculate (force_x / mass, dt);
+    calculate.run(time, dt, end_time, dyn_values);
+
+    std::cout << "\nx = " << dyn_values.coord_x 
+        << "  Vx = " << dyn_values.vel_x 
+        << "  t = " << time;
 }
 
-int main()
+void main()
 {
     system("chcp 1251>nul"); // windows-кодировка в консоли
     start();
 
-    return 0; 
 
     // TODO вынести начальные условия в отдельный файл
-   
+
     // функция фывода в файл  if (time_moment % 0.1 == 0 )
- 
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
