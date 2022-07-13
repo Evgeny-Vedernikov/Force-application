@@ -1,22 +1,22 @@
 #include "MatPoint.h"
 namespace LibMatPoint
 {
-	mat_point::mat_point(double a_x, double dt) :a_dt(a_x* dt)
+	MatPoint::MatPoint(double a_x, double dt) :a_dt(a_x* dt)
 	{
 	}
-	void mat_point::iteration(double dt, mat_point::DynValues& dyn)
+	void MatPoint::iteration(double dt, MatPoint::KinValues& kin)
 	{
-		dyn.vel_x += a_dt;
+		kin.vel_x += a_dt;
 		//output.coord_x = input.coord_x + ((input.Vel_x + output.Vel_x) / 2) * input.d_time;
-		dyn.coord_x += dyn.vel_x * dt;
+		kin.coord_x += kin.vel_x * dt;
 	}
 
-	void mat_point::run(double time, double dt, double end_time, mat_point::DynValues& dyn)
+	void MatPoint::run(double time, double dt, double end_time, MatPoint::KinValues& kin)
 	{
 		while (time <= end_time)
 		{
 			time += dt;
-			iteration (dt, dyn);
+			iteration (dt, kin);
 		}
 	}
 }
