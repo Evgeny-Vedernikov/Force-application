@@ -15,10 +15,10 @@ void start()
 
     dyn_data.coord_x = 0;
     dyn_data.vel_x = 0;
-    dyn_data.accel_x = force_x / mass;
+   
    
       
-    Lib_Dyn_data::mater_point calculate;
+    Lib_Dyn_data::mater_point calculate (force_x / mass, d_time);
     calculate.run(time, d_time, end_time, dyn_data);
 
     std::cout << "\nx = " << dyn_data.coord_x << "  Vx = " << dyn_data.vel_x << "  t = " << time;
