@@ -12,11 +12,13 @@ namespace LibMatPoint
 			double vel_x;
 		};
 	
-		void iteration(double dt, KinValues& kin);
+		void iteration(KinValues& kin);
 
-		double time_run(double time, double dt, double end_time, KinValues& kin);
+		double time_run(double time, double end_time, KinValues& kin);
 
 	private:
-		double a_dt;
+		double dt_;
+		double a_dt_;
+		
 	};
 }

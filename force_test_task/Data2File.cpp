@@ -4,17 +4,28 @@
 
 namespace LibData2File
 {
-	void Data2File::add_line(Data2File::data& dat)
+	bool Data2File::its_time_to_record(double time, double rec_interval, double dt)
+	{
+		return (abs(time / rec_interval - round(time / rec_interval)) < dt / 4);
+	}
+
+	void Data2File::add_line(const LibMatPoint::MatPoint::KinValues kin, const double time)
 	{	
 		std::ofstream out;          // поток для записи
-		out.open("records//record.txt", std::ios::app); // окрываем файл для записи
-		if (out.is_open())  // TODO - как сделать, чтобы папка создавалась при отсутствии
+		out.open("record.txt", std::ios::app); // окрываем файл для записи
+		if (out.is_open())  // TODO - чтобы папка создавалась при отсутствии
+							// добавить дату-время в имя файла,
+							// добавить шапку файла
 		{
-			out << "t = " << dat.time
-			<< " ,    V = " << dat.vel_x
-			<< " ,    x = " << dat.time << std::endl;
+			out << "t = " << time << "    V = " << kin.vel_x << "    x = " << kin.coord_x << std::endl;
 			out.close();
 		}
-		//if ((time / f_interval - int(time / f_interval)) * f_interval < dt / 8) {}
 	}
+			//LibData2File::Data2File::data dat;
+			//dat.time = time;
+			//dat.vel_x = kin.vel_x;
+			//dat.coord_x = kin.coord_x;
+
+			//LibData2File::Data2File data_2_file;
+			//data_2_file.add_line(dat);
 } 

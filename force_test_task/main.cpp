@@ -18,7 +18,7 @@ void start()
     double dt = 0.01; // с   - const ?
     double t0 = 0; // с   - const ?
     float end_time = 30; // с    - const ?
-    float f_interval = 0.1; // с    - const ?
+    float rec_interval = 0.1; // с    - const ?
 
     double time = t0;
     kin_values.coord_x = coord_x_0;
@@ -27,7 +27,7 @@ void start()
     //_mkdir ("records");
 
     LibMatPoint::MatPoint calculate (force_x / mass, dt);  // ____ calculate ?
-    time = calculate.time_run(time, dt, end_time, kin_values);
+    time = calculate.time_run(time, end_time, kin_values);
 
     std::cout << "\nx = " << kin_values.coord_x 
         << "  Vx = " << kin_values.vel_x 
