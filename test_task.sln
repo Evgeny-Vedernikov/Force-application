@@ -6,10 +6,6 @@ MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Force_application", "force_test_task\force_test_task.vcxproj", "{4AD088F8-1C24-4985-B79A-B724448756B0}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{35A6D60E-4231-463F-93B4-72DB4CF2B68D}"
-	ProjectSection(SolutionItems) = preProject
-		force_test_task\FileWriter.cpp = force_test_task\FileWriter.cpp
-		force_test_task\FileWriter.h = force_test_task\FileWriter.h
-	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -129,6 +129,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Data2File.cpp" />
+    <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="MatPoint.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
@@ -136,6 +137,7 @@
     <ClInclude Include="AbstractWriter.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="Data2File.h" />
+    <ClInclude Include="FileWriter.h" />
     <ClInclude Include="MatPoint.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>

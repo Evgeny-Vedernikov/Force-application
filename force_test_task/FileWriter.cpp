@@ -1,3 +1,5 @@
+#include <iostream>
+#include <fstream>
 #include "FileWriter.h"
 namespace dynamics
 {
@@ -10,7 +12,7 @@ namespace dynamics
 		v.add_line(kin);
 	}
 
-	void FileWriter::add_line(const KinValues kin)
+	void FileWriter::add_line(const KinValues kin) const
 	{
 		std::ofstream out;  // поток для записи
 		out.open("file_name", std::ios::app); // окрываем файл для записи
@@ -24,8 +26,8 @@ namespace dynamics
 			out.close();
 		}
 
-	//IterationHandler(const KinValues& kin);
+		//IterationHandler(const KinValues& kin);
 
-
+	}
 } 
 

@@ -2,6 +2,7 @@
 #include "AbstractWriter.h"
 #include "Data.h"
 #include <queue>
+#include <string>
 namespace dynamics
 {
 	class FileWriter : public AbstractWriter
@@ -13,7 +14,7 @@ namespace dynamics
 		static void IterationHandler(const FileWriter& v, const KinValues& kin);
 
 	protected:
-		void FileWriter::add_line(const KinValues kin)
+		void add_line(const KinValues kin) const;
 
 
 	private:

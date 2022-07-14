@@ -12,13 +12,13 @@ void start()
     double vel_x_0 = 0; // м   - const ?
     double dt = 0.01; // с   - const ?
     double t0 = 0; // с   - const ?
-    float end_time = 30; // с    - const ?
-    float rec_interval = 0.1; // с    - const ?
+    double end_time = 30; // с    - const ?
+    double rec_interval = 0.1; // с    - const ?
 
 
     //_mkdir ("records");
-
-    dynamics::MatPoint calculate (force_x / mass, dt, t0, vel_x_0, coord_x_0);
+    dynamics::FileWriter writer("record.txt");
+    dynamics::MatPoint calculate (force_x / mass, dt, t0, vel_x_0, coord_x_0, writer);
     kin_values.t = calculate.time_run(end_time, kin_values);
 
     std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "x = " << kin_values.x;
