@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include "Data2File.h"
+#include "Data.h"
 
 namespace dynamics
 {
@@ -10,7 +11,7 @@ namespace dynamics
 	}
 
 
-	void Data2File::add_line(const MatPoint::KinValues kin)
+	void Data2File::add_line(const KinValues kin)
 	{	
 		std::ofstream out;  // поток для записи
 		out.open("record.txt", std::ios::app); // окрываем файл для записи
@@ -24,11 +25,4 @@ namespace dynamics
 			out.close();
 		}
 	}
-			//LibData2File::Data2File::data dat;
-			//dat.time = time;
-			//dat.vel_x = kin.vel_x;
-			//dat.coord_x = kin.coord_x;
-
-			//LibData2File::Data2File data_2_file;
-			//data_2_file.add_line(dat);
 } 

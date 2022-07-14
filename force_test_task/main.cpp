@@ -1,10 +1,10 @@
 ﻿#include <iostream>
 #include "MatPoint.h"
-
+#include "Data.h"
 
 void start()
 {
-    dynamics::MatPoint::KinValues kin_values;
+    dynamics::KinValues kin_values;
 
     double mass = 50; // кг
     double force_x = 300; // Н
@@ -31,7 +31,5 @@ int main()
 
     return 0;
     // TODO вынести начальные условия в отдельный файл
-
-    // функция фывода в файл  if (time_moment % 0.1 == 0 )
 
 }

@@ -8,7 +8,7 @@ namespace dynamics
 
 		bool its_time_to_record(double time, double rec_interval, double dt);
 
-		void add_line(const MatPoint::KinValues kin);
+		void add_line(const KinValues kin);
 
 	private:
 

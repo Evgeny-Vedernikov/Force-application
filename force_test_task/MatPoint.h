@@ -1,17 +1,13 @@
 #pragma once
+#include "Data.h"
 namespace dynamics
 {
+
 	class MatPoint
 	{
 	public:
 		explicit MatPoint(double a, double dt, double t0, double v0, double x0);
 		~MatPoint() = default;
-		struct KinValues
-		{
-			double t;
-			double v;
-			double x;
-		};
 
 		void iteration(KinValues& kin);
 
