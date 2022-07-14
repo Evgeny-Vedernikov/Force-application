@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "MatPoint.h"
 
+
 void data_to_file(double time, double f_inter, double dt, double v, double s)
 {
     std::cout << "t, v, s" << time, v, s;
@@ -22,6 +23,8 @@ void start()
     double time = t0;
     kin_values.coord_x = coord_x_0;
     kin_values.vel_x = vel_x_0;
+
+    // mkdir("records");
 
     LibMatPoint::MatPoint calculate (force_x / mass, dt);  // ____ calculate ?
     time = calculate.time_run(time, dt, end_time, kin_values);

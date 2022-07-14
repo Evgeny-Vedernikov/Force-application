@@ -19,16 +19,14 @@ namespace LibMatPoint
 		if ((time / f_interval - int(time / f_interval)) * f_interval < dt / 8)
 		{
 			std::ofstream out;          // поток для записи
-			out.open("record.txt"); // окрываем файл для записи
-			if (out.is_open())
+			out.open("records//record.txt", std::ios::app); // окрываем файл для записи
+			if (out.is_open())  // TODO - как сделать, чтобы папка создавалась при отсутствии
 			{
 				out << "t = " << time
 					<< " ,    x = " << kin.coord_x
 					<< " ,    V = " << kin.vel_x << std::endl;
+				out.close();
 			}
-			std::cout << "t = ," << time
-				<< ",    x = ," << kin.coord_x 
-				<< ",    V = ," << kin.vel_x << std::endl;
 		}
 	}
 
