@@ -2,7 +2,7 @@
 #include <fstream>
 #include "Data2File.h"
 
-namespace LibData2File
+namespace dynamics
 {
 	bool Data2File::its_time_to_record(double time, double rec_interval, double dt)
 	{
@@ -10,7 +10,7 @@ namespace LibData2File
 	}
 
 
-	void Data2File::add_line(const LibMatPoint::MatPoint::KinValues kin)
+	void Data2File::add_line(const MatPoint::KinValues kin)
 	{	
 		std::ofstream out;  // поток для записи
 		out.open("record.txt", std::ios::app); // окрываем файл для записи

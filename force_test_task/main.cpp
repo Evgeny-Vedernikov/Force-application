@@ -2,14 +2,9 @@
 #include "MatPoint.h"
 
 
-void data_to_file(double time, double f_inter, double dt, double v, double s)
-{
-    std::cout << "t, v, s" << time, v, s;
-}
-
 void start()
 {
-    LibMatPoint::MatPoint::KinValues kin_values;
+    dynamics::MatPoint::KinValues kin_values;
 
     double mass = 50; // кг
     double force_x = 300; // Н
@@ -23,14 +18,11 @@ void start()
 
     //_mkdir ("records");
 
-    LibMatPoint::MatPoint calculate (force_x / mass, dt, t0, vel_x_0, coord_x_0);
+    dynamics::MatPoint calculate (force_x / mass, dt, t0, vel_x_0, coord_x_0);
     kin_values.t = calculate.time_run(end_time, kin_values);
 
-    std::cout << "\nx = " << kin_values.x 
-        << "  Vx = " << kin_values.v 
-        << "  t = " << time;
+    std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "x = " << kin_values.x;
 }
-
 
 int main()
 {

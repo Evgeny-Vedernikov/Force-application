@@ -1,5 +1,5 @@
 #pragma once
-namespace LibMatPoint
+namespace dynamics
 {
 	class MatPoint
 	{

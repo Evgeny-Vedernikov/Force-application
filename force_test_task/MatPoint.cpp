@@ -3,7 +3,7 @@
 #include <math.h>
 #include "MatPoint.h"
 #include "Data2File.h"
-namespace LibMatPoint
+namespace dynamics
 {
 	MatPoint::MatPoint(double a, double dt, double t0, double v0, double x0)
 		: dt_(dt), t0_(t0), v0_(v0), x0_(x0), a_dt_(a * dt)
@@ -18,7 +18,7 @@ namespace LibMatPoint
 
 	double MatPoint::time_run(double end_time, MatPoint::KinValues& kin)
 	{
-		LibData2File::Data2File data2file; // где его создать лучше?
+		Data2File data2file; // где его создать лучше?
 		kin.t = t0_;
 		kin.v = v0_;
 		kin.x = x0_;
