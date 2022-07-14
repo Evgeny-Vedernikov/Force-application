@@ -20,17 +20,14 @@ void start()
     float end_time = 30; // с    - const ?
     float rec_interval = 0.1; // с    - const ?
 
-    double time = t0;
-    kin_values.coord_x = coord_x_0;
-    kin_values.vel_x = vel_x_0;
 
     //_mkdir ("records");
 
-    LibMatPoint::MatPoint calculate (force_x / mass, dt);  // ____ calculate ?
-    time = calculate.time_run(time, end_time, kin_values);
+    LibMatPoint::MatPoint calculate (force_x / mass, dt, t0, vel_x_0, coord_x_0);
+    kin_values.t = calculate.time_run(end_time, kin_values);
 
-    std::cout << "\nx = " << kin_values.coord_x 
-        << "  Vx = " << kin_values.vel_x 
+    std::cout << "\nx = " << kin_values.x 
+        << "  Vx = " << kin_values.v 
         << "  t = " << time;
 }
 

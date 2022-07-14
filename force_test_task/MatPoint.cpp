@@ -5,30 +5,33 @@
 #include "Data2File.h"
 namespace LibMatPoint
 {
-	MatPoint::MatPoint(double a_x, double dt) : dt_(dt), a_dt_(a_x* dt)
+	MatPoint::MatPoint(double a, double dt, double t0, double v0, double x0)
+		: dt_(dt), t0_(t0), v0_(v0), x0_(x0), a_dt_(a * dt)
 	{
 	}
 	void MatPoint::iteration(MatPoint::KinValues& kin)
 	{
-		//vel_x_before = kin.vel_x
-		kin.vel_x += a_dt_;
-		kin.coord_x += kin.vel_x * dt_;
+		kin.v += a_dt_;
+		kin.x += kin.v * dt_;
 	}
 
 
-	double MatPoint::time_run(double time, double end_time, MatPoint::KinValues& kin)
+	double MatPoint::time_run(double end_time, MatPoint::KinValues& kin)
 	{
 		LibData2File::Data2File data2file; // где его создать лучше?
-		while (time <= end_time)
+		kin.t = t0_;
+		kin.v = v0_;
+		kin.x = x0_;
+		while (kin.t <= end_time)
 		{
-			time += dt_;
+			kin.t += dt_;
 			iteration (kin);
 
-			if (data2file.its_time_to_record(time, 0.1, dt_))
+			//if (data2file.its_time_to_record(kin.t, 0.1, dt_))
 			{
-				data2file.add_line(kin, time);
+				data2file.add_line(kin);
 			};//сделать 0.1 одним из начальных параметров
 		}
-		return (time);
+		return (kin.t);
 	}
 } 
