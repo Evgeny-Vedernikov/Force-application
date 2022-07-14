@@ -1,24 +1,20 @@
 #pragma once
-#include "MatPoint.h"
-namespace LibData2File
+#include "Data.h"
+#include <queue>
+namespace dynamics
 {
-	class Data2File
+	class AbstractWriter
 	{
 	public:
-		//Data2File() = default;
-		//~Data2File() = default;
-		//struct data
-		//{	
-		//	double time;
-		//	double vel_x;
-		//	double coord_x;
-		//};
+		//static void IterationHandler(const KinValues& kin);
 
-		bool its_time_to_record(double time, double rec_interval, double dt);
+		
 
-		void add_line(const LibMatPoint::MatPoint::KinValues kin, const double time);
 
-	private:
 
+	protected:
+		double t;
+		std::queue < KinValues, std::deque<KinValues> > q;
+		
 	};
 }

@@ -133,6 +133,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AbstractWriter.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="Data2File.h" />
     <ClInclude Include="MatPoint.h" />
