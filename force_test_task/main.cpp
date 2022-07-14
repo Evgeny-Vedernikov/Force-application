@@ -13,18 +13,18 @@ void start()
 
     double mass = 50; // кг
     double force_x = 300; // Н
-    double coord_x_0 = 0; // м
-    double vel_x_0 = 0; // м
-    double dt = 0.01; // с
-    double t0 = 0; // с
-    float end_time = 30; // с
-    float f_interval = 0.1; // с
+    double coord_x_0 = 0; // м   - const ?
+    double vel_x_0 = 0; // м   - const ?
+    double dt = 0.01; // с   - const ?
+    double t0 = 0; // с   - const ?
+    float end_time = 30; // с    - const ?
+    float f_interval = 0.1; // с    - const ?
 
     double time = t0;
     kin_values.coord_x = coord_x_0;
     kin_values.vel_x = vel_x_0;
 
-    // mkdir("records");
+    //_mkdir ("records");
 
     LibMatPoint::MatPoint calculate (force_x / mass, dt);  // ____ calculate ?
     time = calculate.time_run(time, dt, end_time, kin_values);
