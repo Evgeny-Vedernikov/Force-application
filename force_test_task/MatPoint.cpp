@@ -6,8 +6,8 @@
 #include "Data.h"
 namespace dynamics
 {
-	MatPoint::MatPoint(double a, double dt, double t0, double v0, double x0, const FileWriter& writer)
-		: dt_(dt), t0_(t0), v0_(v0), x0_(x0), a_dt_(a * dt), writer_(writer)
+	MatPoint::MatPoint(double a, double dt, double t0, double v0, double x0, const FileWriter& writer, HandlerType handler)
+		: dt_(dt), t0_(t0), v0_(v0), x0_(x0), a_dt_(a * dt), writer_(writer), handler_(handler)
 	{
 	}
 	void MatPoint::iteration(KinValues& kin)

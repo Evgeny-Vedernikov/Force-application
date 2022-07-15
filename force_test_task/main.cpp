@@ -18,7 +18,7 @@ void start()
 
     //_mkdir ("records");
     dynamics::FileWriter writer("record.txt");
-    dynamics::MatPoint calculate (force_x / mass, dt, t0, vel_x_0, coord_x_0, writer);
+    dynamics::MatPoint calculate (force_x / mass, dt, t0, vel_x_0, coord_x_0, writer, dynamics::FileWriter::IterationHandler);
     kin_values.t = calculate.time_run(end_time, kin_values);
 
     std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "x = " << kin_values.x;
