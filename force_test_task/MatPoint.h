@@ -1,6 +1,6 @@
 #pragma once
 #include "Data.h"
-#include "FileWriter.h"
+#include "Dispatcher.h"
 
 
 namespace dynamics
@@ -9,7 +9,7 @@ namespace dynamics
 	class MatPoint
 	{
 	public:
-		explicit MatPoint(double a, double dt, double t0, double v0, double x0, const FileWriter& writer, HandlerType handler);
+		explicit MatPoint(double a, double dt, double t0, double v0, double x0, Dispatcher& dispatcher, HandlerType handler);
 		~MatPoint() = default;
 
 		void iteration(KinValues& kin);
@@ -22,7 +22,7 @@ namespace dynamics
 		double v0_;
 		double x0_;
 		double a_dt_;
-		const FileWriter& writer_;
+		Dispatcher& dispatcher_;
 		HandlerType handler_;
 	};
 }

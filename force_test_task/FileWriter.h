@@ -19,8 +19,6 @@ namespace dynamics
 
 	private:
 		std::string file_name_;
-		
-
-		
+				
 	};
 }

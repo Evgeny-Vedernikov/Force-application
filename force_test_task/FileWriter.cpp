@@ -15,7 +15,7 @@ namespace dynamics
 	void FileWriter::add_line(const KinValues kin) const
 	{
 		std::ofstream out;  // поток для записи
-		out.open("file_name", std::ios::app); // окрываем файл для записи
+		out.open(file_name_, std::ios::app); // окрываем файл для записи
 		if (out.is_open())  // TODO - чтобы папка создавалась при отсутствии
 							// добавить дату-время в имя файла,
 							// добавить шапку файла

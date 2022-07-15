@@ -3,14 +3,13 @@
 
 namespace dynamics
 {
-	class FileWriter;
-	class KinValues;
-
-	using HandlerType = std::function<void (const FileWriter& , const KinValues& )> ;
 	struct KinValues
 	{
 		double t;
 		double v;
 		double x;
 	};
+	class Dispatcher;
+
+	using HandlerType = std::function<void(Dispatcher&, const KinValues&)>;
 }
