@@ -8,7 +8,7 @@ void start()
 
     double mass = 50; // кг
     double force_x = 300; // Н
-    double coord_x_0 = 0; // м   - const ?
+    double coord_x0 = 0; // м   - const ?
     double vel_x_0 = 0; // м   - const ?
     double dt = 0.01; // с   - const ?
     double t0 = 0; // с   - const ?
@@ -19,10 +19,11 @@ void start()
 
 
     dynamics::Dispatcher dispatcher("127.0.0.5", 20000, "record.txt", to_file_interval, to_udp_interval);
-    dynamics::MatPoint point_1 (force_x / mass, dt, t0, vel_x_0, coord_x_0, dispatcher, &dynamics::Dispatcher::IterationHandler);
+    dynamics::MatPoint point_1 (force_x / mass, dt, t0, vel_x_0, coord_x0, dispatcher, &dynamics::Dispatcher::IterationHandler);
+    
     kin_values.t = point_1.time_run(end_time, kin_values);
 
-    std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "x = " << kin_values.x;
+    std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "s = " << kin_values.x - coord_x0;
 }
 
 int main()

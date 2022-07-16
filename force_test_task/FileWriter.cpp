@@ -14,6 +14,7 @@ namespace dynamics
 	//}
 
 	void FileWriter::add_line(const KinValues kin) const
+
 	{
 		std::ofstream out;  // поток для записи
 		out.open(file_name_, std::ios::app); // окрываем файл для записи

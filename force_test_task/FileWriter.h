@@ -12,13 +12,12 @@ namespace dynamics
 		~FileWriter() = default;
 
 		static void IterationHandler(const FileWriter& v, const KinValues& kin);
+		void add_line(const KinValues kin) const;
 
 	protected:
-		void add_line(const KinValues kin) const;
 
 
 	private:
 		std::string file_name_;
-				
 	};
 }
