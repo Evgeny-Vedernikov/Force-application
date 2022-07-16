@@ -8,11 +8,6 @@ namespace dynamics
 	{
 	}
 
-	//void FileWriter::IterationHandler(const FileWriter& v, const KinValues& kin)
-	//{
-	//	v.add_line(kin);
-	//}
-
 	void FileWriter::add_line(const KinValues kin) const
 
 	{

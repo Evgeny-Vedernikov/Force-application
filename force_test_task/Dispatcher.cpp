@@ -6,13 +6,14 @@ namespace dynamics
 {
 	Dispatcher::Dispatcher(const std::string& host, int16_t port, const std::string& file_name, double to_file_interval,
 		 double to_network_interval) 
-		: host_(host)
-		, port_(port)
-		, to_file_interval_(to_file_interval)
+		// host_(host)
+		//, port_(port)
+		: to_file_interval_(to_file_interval)
 		, to_network_interval_(to_network_interval)
 		, prev_file_time_(0)
 		, prev_network_time_(0)
 		, file_writer_(file_name)
+		, network_writer_(host, port)
 	{
 	
 	}

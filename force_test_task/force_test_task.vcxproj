@@ -133,6 +133,7 @@
     <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="MatPoint.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="NetworkWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AbstractWriter.h" />
@@ -141,6 +142,7 @@
     <ClInclude Include="Dispatcher.h" />
     <ClInclude Include="FileWriter.h" />
     <ClInclude Include="MatPoint.h" />
+    <ClInclude Include="NetworkWriter.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
