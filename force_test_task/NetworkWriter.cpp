@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include "NetworkWriter.h"
-
+#include <iostream>
 
 namespace dynamics
 {
@@ -15,42 +15,66 @@ namespace dynamics
 
 	bool NetworkWriter::UDPsender(const KinValues& kin)
 	{
+
+		//in_addr ip_to_num;
+		//int r = inet_pton(AF_INET, host_.c_str(), &ip_to_num);
+		//if (r < 0)
+		//{
+		//	std::cerr << "Функци inet_pton вернула ненулевой код возврата " << r;
+		//	return false;
+		//}
+
+		//sockaddr_in serv_info;
+		//ZeroMemory(&serv_info, sizeof(serv_info));
+		//serv_info.sin_family = AF_INET;
+		//serv_info.sin_addr = ip_to_num;
+		//serv_info.sin_port = htons(port_);
+
+
+		//// Инициализация сокета
 		//WSADATA wsaData;
-		//SOCKET SendRecvSocket;  // сокет для приема и передачи
-		//sockaddr_in ServerAddr;  // это будет адрес сервера и клиентов
-		//int err, maxlen = 512;  // код ошибки, размер буферов и размер структуры адреса
-		//char* recvbuf = new char[maxlen];  // буфер приема
-		//char* query = new char[maxlen];  // буфер отправки
-
-
-		//// Initialize Winsock
-		//WSAStartup(MAKEWORD(2, 2), &wsaData);
-
+		//r = WSAStartup(MAKEWORD(2, 2), &wsaData);
+		//if (r < 0)
+		//{
+		//	std::cerr << "Функци WSAStartup вернула ненулевой код возврата " << r;
+		//	//std::cerr << WSAGetLastError();
+		//	return false;
+		//}
 		//// Create a SOCKET for connecting to server
-		//SendRecvSocket = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
-
-		//ServerAddr.sin_family = AF_INET;
-		//ServerAddr.sin_addr.s_addr = inet_addr("127.0.0.1");
-		//ServerAddr.sin_port = htons(port_);
-
-		//_snprintf_s(query, maxlen, maxlen, "CALC * 12 6\n");
-		//// отправляем запрос на сервер
-		//sendto(SendRecvSocket, query, strlen(query), 0, (sockaddr*)&ServerAddr, sizeof(ServerAddr));
-		//printf("Sent: %s\n", query);
-
-		//// получаем результат
-		//err = recvfrom(SendRecvSocket, recvbuf, maxlen, 0, 0, 0);
-		//if (err > 0) {
-		//	recvbuf[err] = 0;
-		//	printf("Result: %s\n", (char*)recvbuf);
-		//}
-		//else {
-		//	printf("recv failed: %d\n", WSAGetLastError());
-		//	closesocket(SendRecvSocket);
+		//SOCKET sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
+		//if (sock == INVALID_SOCKET)
+		//{
+		//	std::cerr << "Функци socket вернула ненулевой код возврата " << sock;
+		//	closesocket(sock);/////
 		//	WSACleanup();
+		//	return false;
 		//}
 
-		//closesocket(SendRecvSocket);
+
+		//r = connect(sock, (sockaddr*)&serv_info, sizeof(serv_info));
+
+		//if (r < 0)
+		//{
+		//	std::cerr << "Функци connect вернула ненулевой код возврата " << r;
+		//	closesocket(sock);/////
+		//	WSACleanup();
+		//	return false;
+		//}
+
+		//std::string data = "abdegtiflskdjfsa;lfkj";
+		//// отправляем запрос на сервер
+		//r = send(sock, data.c_str(), data.size(), 0);
+
+		//if (r == SOCKET_ERROR) 
+		//{
+		//	std::cerr << "Функци send вернула ненулевой код возврата " << r;
+		//	closesocket(sock);/////
+		//	WSACleanup();
+		//	return false;
+		//}
+
+		//closesocket(sock);
+		//WSACleanup();
 
 		return true;
 	}

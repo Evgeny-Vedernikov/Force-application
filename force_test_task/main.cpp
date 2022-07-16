@@ -18,7 +18,7 @@ void start()
     double to_udp_interval = 1; // с    - const ?
 
 
-    dynamics::Dispatcher dispatcher("127.0.0.5", 1000, "record.txt", to_file_interval - dt/4, to_udp_interval - dt/4);
+    dynamics::Dispatcher dispatcher("127.0.0.5", 1000, "record.txt", to_file_interval - dt/8, to_udp_interval - dt/8);
     dynamics::MatPoint point_1 (force_x / mass, dt, t0, vel_x_0, coord_x0, dispatcher, &dynamics::Dispatcher::IterationHandler);
     
     kin_values.t = point_1.time_run(end_time, kin_values);
