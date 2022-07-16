@@ -22,11 +22,14 @@ namespace dynamics
 		kin.t = t0_;
 		kin.v = v0_;
 		kin.x = x0_;
+
+		handler_(dispatcher_, kin, true);
+
 		while (kin.t <= end_time)
 		{
 			kin.t += dt_;
 			iteration (kin);
-			handler_(dispatcher_, kin);
+			handler_(dispatcher_, kin, false);
 			
 			//if (data2file.its_time_to_record(kin.t, 0.1, dt_))
 			//{

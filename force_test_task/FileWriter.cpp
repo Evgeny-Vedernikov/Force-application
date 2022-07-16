@@ -1,16 +1,17 @@
 #include <iostream>
 #include <fstream>
 #include "FileWriter.h"
+
 namespace dynamics
 {
 	FileWriter::FileWriter(const std::string& file_name) : file_name_(file_name) 
 	{
 	}
 
-	void FileWriter::IterationHandler(const FileWriter& v, const KinValues& kin)
-	{
-		v.add_line(kin);
-	}
+	//void FileWriter::IterationHandler(const FileWriter& v, const KinValues& kin)
+	//{
+	//	v.add_line(kin);
+	//}
 
 	void FileWriter::add_line(const KinValues kin) const
 	{
@@ -25,9 +26,6 @@ namespace dynamics
 			out << "t = " << kin.t << "    V = " << kin.v << "    x = " << kin.x << std::endl;
 			out.close();
 		}
-
-		//IterationHandler(const KinValues& kin);
-
 	}
 } 
 

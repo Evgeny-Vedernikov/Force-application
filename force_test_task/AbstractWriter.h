@@ -6,6 +6,7 @@ namespace dynamics
 	class AbstractWriter
 	{
 	public:
+		//should_wr
 		//static void IterationHandler(const KinValues& kin);
 
 		

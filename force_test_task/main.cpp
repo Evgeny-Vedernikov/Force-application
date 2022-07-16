@@ -13,13 +13,15 @@ void start()
     double dt = 0.01; // с   - const ?
     double t0 = 0; // с   - const ?
     double end_time = 30; // с    - const ?
-    double rec_interval = 0.1; // с    - const ?
+
+    double to_file_interval = 0.1; // с    - const ?
+    double to_udp_interval = 1; // с    - const ?
 
 
-    //_mkdir ("records");
-    dynamics::Dispatcher dispatcher("127.0.0.5", 20000, "record.txt");
-    dynamics::MatPoint calculate (force_x / mass, dt, t0, vel_x_0, coord_x_0, dispatcher, dynamics::Dispatcher::IterationHandler);
-    kin_values.t = calculate.time_run(end_time, kin_values);
+    dynamics::Dispatcher dispatcher("127.0.0.5", 20000, "record.txt", to_file_interval, to_udp_interval);
+    dynamics::MatPoint point_1 (force_x / mass, dt, t0, vel_x_0, coord_x_0, dispatcher, dynamics::Dispatcher::IterationHandler);
+    //dynamics::Dispatcher dispatcher ()
+    kin_values.t = point_1.time_run(end_time, kin_values);
 
     std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "x = " << kin_values.x;
 }
