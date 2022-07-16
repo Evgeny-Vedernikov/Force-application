@@ -19,8 +19,7 @@ void start()
 
 
     dynamics::Dispatcher dispatcher("127.0.0.5", 20000, "record.txt", to_file_interval, to_udp_interval);
-    dynamics::MatPoint point_1 (force_x / mass, dt, t0, vel_x_0, coord_x_0, dispatcher, dynamics::Dispatcher::IterationHandler);
-    //dynamics::Dispatcher dispatcher ()
+    dynamics::MatPoint point_1 (force_x / mass, dt, t0, vel_x_0, coord_x_0, dispatcher, &dynamics::Dispatcher::IterationHandler);
     kin_values.t = point_1.time_run(end_time, kin_values);
 
     std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "x = " << kin_values.x;

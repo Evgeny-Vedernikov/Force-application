@@ -12,10 +12,10 @@ namespace dynamics
 			double to_network_interval);
 		~Dispatcher() = default;
 
-			void IterationHandler(Dispatcher& v, const KinValues& kin);
+			static void IterationHandler(Dispatcher& v, const KinValues& kin, bool zero_iter);
 			void ToFile(const KinValues& kin);
-			void ToUDP( const KinValues& kin);
-			bool ShouldWrite(const double time, const double prev_time, const double rec_interval);
+			void ToNetwork( const KinValues& kin);
+			bool ShouldWrite(double t, double prev_time, double rec_interval);
 
 	protected:
 

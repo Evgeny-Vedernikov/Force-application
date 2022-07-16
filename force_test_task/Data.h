@@ -11,5 +11,5 @@ namespace dynamics
 	};
 	class Dispatcher;
 
-	using HandlerType = std::function<void(Dispatcher&, const KinValues&)>;
+	using HandlerType = std::function<void(Dispatcher&, const KinValues&, bool zero_iter)>;
 }

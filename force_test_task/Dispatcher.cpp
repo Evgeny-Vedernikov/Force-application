@@ -16,35 +16,35 @@ namespace dynamics
 	
 	}
 
-	void Dispatcher::IterationHandler(Dispatcher& v, const KinValues& kin)
-	{	
-		if (ShouldWrite(kin.t, prev_file_time_, to_file_interval_) )||  zero_iter
+	void Dispatcher::IterationHandler(Dispatcher& v, const KinValues& kin, bool zero_iter)
+	{
+		if (v.ShouldWrite(kin.t, v.prev_file_time_, v.to_file_interval_) || true)
 		{
 			v.ToFile(kin);
 		}
 
-		if (ShouldWrite(kin.t, prev_network_time_, to_network_interval_) ) || zero_iter
+		if (v.ShouldWrite(kin.t, v.prev_network_time_, v.to_network_interval_) || true)
 		{
-			v.ToUDP(kin);
+			v.ToNetwork(kin);
 		}
-
-	bool Dispatcher::Should_Write(double prev_time, double rec_interval) 
+	}
+	bool Dispatcher::ShouldWrite(double t, double prev_rec_t, double rec_interval)
 	{
-		return (kin.t - prev_time >= rec_interval) ;
+		return (t - prev_rec_t >= rec_interval) ;
 	}
 	
-	void Dispatcher::ToFile(Dispatcher& v, const KinValues& kin)
+	void Dispatcher::ToFile(const KinValues& kin)
 	{	
-		if (Should_Write (prev_file_time_, to_file_interval_))
+		if (ShouldWrite (kin.t, prev_file_time_, to_file_interval_))
 		{
-			prev_file_time_ = kin.t
-		};
+			prev_file_time_ = kin.t;
+		}
 
 		//v.add_line(const KinValues kin)
 		// v.add_line(kin);
 	}
 
-	void Dispatcher::ToUDP(Dispatcher& v, const KinValues& kin) 
+	void Dispatcher::ToNetwork(const KinValues& kin) 
 	{
 	
     }
