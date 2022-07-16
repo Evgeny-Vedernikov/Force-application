@@ -9,8 +9,9 @@ namespace dynamics
 	{
 	public:
 		NetworkWriter(const std::string& host, const int16_t port);
-		~NetworkWriter() = default;
+		~NetworkWriter() = default; 
 
+		bool UDPsender(const KinValues& kin);
 
 	protected:
 
