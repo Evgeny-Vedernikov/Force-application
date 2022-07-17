@@ -13,13 +13,9 @@ namespace dynamics
 	{
 		std::ofstream out;  // поток для записи
 		out.open(file_name_, std::ios::app); // окрываем файл для записи
-		if (out.is_open())  // TODO - чтобы папка создавалась при отсутствии
-							// добавить дату-время в имя файла,
-							// добавить шапку файла
+		if (out.is_open())  
 		{
-			//out.precision(6);
-			//out << std::fixed;
-			out << "t = " << kin.t << "    V = " << kin.v << "    x = " << kin.x << std::endl;
+			out << kin_to_string(kin).c_str();
 			out.close();
 		}
 	}

@@ -5,9 +5,7 @@
 namespace dynamics
 {
 	Dispatcher::Dispatcher(const std::string& host, int16_t port, const std::string& file_name, double to_file_interval,
-		 double to_network_interval) 
-		// host_(host)
-		//, port_(port)
+		 double to_network_interval)
 		: to_file_interval_(to_file_interval)
 		, to_network_interval_(to_network_interval)
 		, prev_file_time_(0)
@@ -41,12 +39,10 @@ namespace dynamics
 	{
 		file_writer_.add_line(kin);
 	}
-		//v.add_line(const KinValues kin)
-		//v.add_line(kin);
 
 
 	void Dispatcher::ToNetwork(const KinValues& kin) 
 	{
-	
+		network_writer_.UDPsender(kin);
     }
 } 

@@ -1,5 +1,5 @@
 #pragma once
-#include "AbstractWriter.h"
+#include "ParentWriter.h"
 #include "FileWriter.h"
 #include "NetworkWriter.h"
 #include "Data.h"
@@ -18,8 +18,6 @@ namespace dynamics
 			void ToFile(const KinValues& kin);
 			void ToNetwork( const KinValues& kin);
 			bool ShouldWrite(double t, double prev_time, double rec_interval);
-
-	protected:
 
 	private:
 		//std::string host_;

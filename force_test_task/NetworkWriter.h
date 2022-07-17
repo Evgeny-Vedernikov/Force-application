@@ -1,11 +1,11 @@
 #pragma once
-#include "AbstractWriter.h"
+#include "ParentWriter.h"
 #include "Data.h"
 #include <queue>
 #include <string>
 namespace dynamics
 {
-	class NetworkWriter : public AbstractWriter
+	class NetworkWriter : public ParentWriter
 	{
 	public:
 		NetworkWriter(const std::string& host, const int16_t port);

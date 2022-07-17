@@ -134,15 +134,16 @@
     <ClCompile Include="MatPoint.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NetworkWriter.cpp" />
+    <ClCompile Include="ParentWriter.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="AbstractWriter.h" />
     <ClInclude Include="Data.h" />
     <ClInclude Include="Data2File.h" />
     <ClInclude Include="Dispatcher.h" />
     <ClInclude Include="FileWriter.h" />
     <ClInclude Include="MatPoint.h" />
     <ClInclude Include="NetworkWriter.h" />
+    <ClInclude Include="ParentWriter.h" />
     <ClInclude Include="resource.h" />
   </ItemGroup>
   <ItemGroup>
