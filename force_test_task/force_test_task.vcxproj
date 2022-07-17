@@ -128,7 +128,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Data2File.cpp" />
     <ClCompile Include="Dispatcher.cpp" />
     <ClCompile Include="FileWriter.cpp" />
     <ClCompile Include="MatPoint.cpp" />
@@ -138,7 +137,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Data.h" />
-    <ClInclude Include="Data2File.h" />
     <ClInclude Include="Dispatcher.h" />
     <ClInclude Include="FileWriter.h" />
     <ClInclude Include="MatPoint.h" />
