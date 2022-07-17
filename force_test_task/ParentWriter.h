@@ -19,11 +19,8 @@ namespace dynamics
 	protected:
 
 		using QueueType = std::queue < KinValues, std::deque<KinValues> >;
-
-		bool WriteFinished();
 		
 		double end_time;
-		double t;
 		QueueType q;
 		std::mutex mtx;
 		double cur_time;

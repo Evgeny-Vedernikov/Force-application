@@ -24,6 +24,7 @@ void Start()
     dynamics::FileWriter filewriter(end_time, out_file);
     dynamics::NetworkWriter networkwriter(end_time, host, port);
     dynamics::Dispatcher dispatcher(point, filewriter, networkwriter, end_time, to_file_interval - dt / 8, to_network_interval - dt / 8);
+    //dynamics::Dispatcher dispatcher(point, filewriter, networkwriter, end_time, to_file_interval , to_network_interval);
     point.Init(dispatcher, dynamics::Dispatcher::DataHandler);
     dynamics::KinValues kin_values = dispatcher.Run();
 
