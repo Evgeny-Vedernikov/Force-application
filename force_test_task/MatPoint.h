@@ -9,21 +9,19 @@ namespace dynamics
 	class MatPoint
 	{
 	public:
-		explicit MatPoint(double a, double dt, double t0, double v0, double x0);
+		explicit MatPoint(double a, double dt, const KinValues& kin);
 		~MatPoint() = default;
 
 		void Init(Dispatcher& dispatcher, HandlerType handler);
 
 		void iteration(KinValues& kin);
 
-		double TimeRun(double end_time, KinValues& kin);
+		void TimeRun(double end_time, KinValues& kin);
 
 	private:
 		double dt_;
-		double t0_;
-		double v0_;
-		double x0_;
 		double a_dt_;
+		KinValues kin0;
 		Dispatcher* dispatcher_;
 		HandlerType handler_;
 	};

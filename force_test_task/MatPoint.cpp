@@ -6,8 +6,8 @@
 #include "Data.h"
 namespace dynamics
 {
-	MatPoint::MatPoint(double a, double dt, double t0, double v0, double x0)
-		: dt_(dt), t0_(t0), v0_(v0), x0_(x0), a_dt_(a * dt), dispatcher_(nullptr), handler_(nullptr)
+	MatPoint::MatPoint(double a, double dt, const KinValues& kin)
+		: dt_(dt), a_dt_(a * dt), kin0(kin), dispatcher_(nullptr), handler_(nullptr)
 	{
 	}
 	void MatPoint::iteration(KinValues& kin)
@@ -22,11 +22,9 @@ namespace dynamics
 		handler_ = handler;
 	}
 
-	double MatPoint::TimeRun(double end_time, KinValues& kin) 
+	void  MatPoint::TimeRun(double end_time, KinValues& kin) 
 	{
-		kin.t = t0_;
-		kin.v = v0_;
-		kin.x = x0_;
+		kin = kin0;
 
 		handler_(*dispatcher_, kin, true);
 
@@ -35,12 +33,6 @@ namespace dynamics
 			kin.t += dt_;
 			iteration (kin);
 			handler_(*dispatcher_, kin, false);
-			
-			//if (data2file.its_time_to_record(kin.t, 0.1, dt_))
-			//{
-			//	data2file.add_line(kin);
-			//};//сделать 0.1 одним из начальных параметров
 		}
-		return (kin.t);
 	}
 } 

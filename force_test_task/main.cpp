@@ -1,6 +1,7 @@
 ﻿#include "MatPoint.h"
 #include "Data.h"
 #include "FileWriter.h"
+#include "NetworkWriter.h"
 #include <iostream>
 
 void Start()
@@ -18,12 +19,15 @@ void Start()
     std::string host = "192.168.2.202";
     int16_t port = 1000;
     std::string out_file = "out.txt";
-
+    
     dynamics::KinValues kin_values;
-    dynamics::Dispatcher dispatcher(host, port, out_file, to_file_interval - dt/8, to_network_interval - dt/8, end_time);
-    dynamics::MatPoint point_1 (force_x / mass, dt, t0, vel_x_0, coord_x0);
-    point_1.Init(dispatcher, dynamics::Dispatcher::DataHandler);
-    kin_values.t = point_1.TimeRun(end_time, kin_values);
+    dynamics::MatPoint point(force_x / mass, dt, {t0, vel_x_0, coord_x0 });
+    dynamics::FileWriter filewriter(end_time, out_file);
+    dynamics::NetworkWriter networkwriter(end_time, host, port);
+    dynamics::Dispatcher dispatcher(point, filewriter, networkwriter, end_time, to_file_interval - dt / 8, to_network_interval - dt / 8);
+    point.Init(dispatcher, dynamics::Dispatcher::DataHandler);
+    point.TimeRun(end_time, kin_values);
+
 
     std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "s = " << kin_values.x - coord_x0;
 }

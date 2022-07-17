@@ -1,17 +1,21 @@
+#include "Dispatcher.h"
+#include "MatPoint.h"
+#include "FileWriter.h"
+#include "NetworkWriter.h"
 #include <iostream>
 #include <fstream>
-#include "Dispatcher.h"
-#include "FileWriter.h"
+
 namespace dynamics
 {
-	Dispatcher::Dispatcher(const std::string& host, int16_t port, const std::string& file_name, double to_file_interval,
-		 double to_network_interval, double end_time)
+	Dispatcher::Dispatcher(MatPoint& mat_point, FileWriter& file_writer, NetworkWriter& network_writer,
+						   double end_time, double to_file_interval, double to_network_interval)
 		: to_file_interval_(to_file_interval)
-		, to_network_interval_(to_network_interval)
 		, prev_file_time_(0)
+		, to_network_interval_(to_network_interval)
 		, prev_network_time_(0)
-		, file_writer_(end_time, file_name)
-		, network_writer_(end_time, host, port)
+		, mat_point_(mat_point)
+		, file_writer_(file_writer)
+		, network_writer_(network_writer)
 	{
 	
 	}
