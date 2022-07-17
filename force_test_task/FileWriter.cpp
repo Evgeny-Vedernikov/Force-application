@@ -10,7 +10,7 @@ namespace dynamics
 	{
 	}
 
-	void FileWriter::add_line(const KinValues kin) const
+	void FileWriter::AddLine(const KinValues kin) const
 
 	{
 		std::ofstream out;  // поток для записи

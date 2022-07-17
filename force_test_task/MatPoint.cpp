@@ -17,7 +17,7 @@ namespace dynamics
 	}
 
 
-	double MatPoint::time_run(double end_time, KinValues& kin) 
+	double MatPoint::TimeRun(double end_time, KinValues& kin) 
 	{
 		kin.t = t0_;
 		kin.v = v0_;

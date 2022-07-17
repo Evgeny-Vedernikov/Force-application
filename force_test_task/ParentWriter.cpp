@@ -6,7 +6,7 @@
 
 namespace dynamics
 {
-	ParentWriter::ParentWriter(double a_end_time) : end_time(a_end_time), t(0), q(), mtx()
+	ParentWriter::ParentWriter(double a_end_time) : cur_time(0), end_time(a_end_time), t(0), q(), mtx()
 	{
 	}
 
@@ -26,7 +26,24 @@ namespace dynamics
 		std::lock_guard<std::mutex> lock(mtx);
 		q.push (kin);
 	}
-	
+	void ParentWriter::Run ()
+	{
+		while (cur_time <= end_time )
+		{
+			if (!q.empty())
+			{
+				KinValues kin_data = PopQueque();
+				Sender(KinToString(kin_data));
+				cur_time = kin_data.t;
+			};
+		}
+	}
+
+	bool ParentWriter::Sender(const std::string& data_str)
+	{
+		return true;
+	}
+
 	KinValues ParentWriter::PopQueque()
 	{	
 		std::lock_guard<std::mutex> lock(mtx);

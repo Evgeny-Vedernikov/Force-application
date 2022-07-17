@@ -14,7 +14,7 @@ namespace dynamics
 			double to_network_interval, double end_time);
 		~Dispatcher() = default;
 
-			static void IterationHandler(Dispatcher& v, const KinValues& kin, bool zero_iter);
+			static void DataHandler(Dispatcher& v, const KinValues& kin, bool zero_iter);
 			void ToFile(const KinValues& kin);
 			void ToNetwork( const KinValues& kin);
 			bool ShouldWrite(double t, double prev_time, double rec_interval);

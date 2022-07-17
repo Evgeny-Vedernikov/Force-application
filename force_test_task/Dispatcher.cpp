@@ -16,7 +16,7 @@ namespace dynamics
 	
 	}
 
-	void Dispatcher::IterationHandler(Dispatcher& v, const KinValues& kin, bool write_first_call)
+	void Dispatcher::DataHandler(Dispatcher& v, const KinValues& kin, bool write_first_call)
 	{
 		if (v.ShouldWrite(kin.t, v.prev_file_time_, v.to_file_interval_) || write_first_call)
 		{

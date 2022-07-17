@@ -3,7 +3,7 @@
 #include "FileWriter.h"
 #include <iostream>
 
-void start()
+void Start()
 {
     double mass = 50; // кг
     double force_x = 300; // Н
@@ -21,9 +21,9 @@ void start()
 
     dynamics::KinValues kin_values;
     dynamics::Dispatcher dispatcher(host, port, out_file, to_file_interval - dt/8, to_network_interval - dt/8, end_time);
-    dynamics::MatPoint point_1 (force_x / mass, dt, t0, vel_x_0, coord_x0, dispatcher, &dynamics::Dispatcher::IterationHandler);
+    dynamics::MatPoint point_1 (force_x / mass, dt, t0, vel_x_0, coord_x0, dispatcher, &dynamics::Dispatcher::DataHandler);
     
-    kin_values.t = point_1.time_run(end_time, kin_values);
+    kin_values.t = point_1.TimeRun(end_time, kin_values);
 
     std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "s = " << kin_values.x - coord_x0;
 }
@@ -31,7 +31,7 @@ void start()
 int main()
 {
     system("chcp 1251>nul"); // windows-кодировка в консоли
-    start();
+    Start();
 
     return 0;
 
