@@ -8,7 +8,7 @@ namespace dynamics
 	class NetworkWriter : public ParentWriter
 	{
 	public:
-		NetworkWriter(const std::string& host, const int16_t port);
+		NetworkWriter(double end_time, const std::string& host, const int16_t port);
 		~NetworkWriter() = default; 
 
 		bool UDPsender(const KinValues& kin);

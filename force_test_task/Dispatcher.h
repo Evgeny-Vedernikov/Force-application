@@ -11,7 +11,7 @@ namespace dynamics
 	{
 	public:
 		Dispatcher(const std::string& host, int16_t port, const std::string& file_name, double to_file_interval,
-			double to_network_interval);
+			double to_network_interval, double end_time);
 		~Dispatcher() = default;
 
 			static void IterationHandler(Dispatcher& v, const KinValues& kin, bool zero_iter);

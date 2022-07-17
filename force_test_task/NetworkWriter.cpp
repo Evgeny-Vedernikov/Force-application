@@ -8,7 +8,10 @@
 
 namespace dynamics
 {
-	NetworkWriter::NetworkWriter(const std::string& host, const int16_t port) : host_(host), port_(port)
+	NetworkWriter::NetworkWriter(double end_time, const std::string& host, const int16_t port)
+		: ParentWriter(end_time)
+		, host_(host)
+		, port_(port)
 	{
 	}
 
@@ -62,9 +65,9 @@ namespace dynamics
 			return false;
 		}
 
-		std::string data = kin_to_string(kin);
+		std::string data = KinToString(kin);
 		// отправляем запрос на сервер
-		r = send(sock, data.c_str(), data.size(), 0);
+		r = send(sock, data.c_str(), static_cast<int>(data.size()), 0);
 
 		if (r == SOCKET_ERROR) 
 		{

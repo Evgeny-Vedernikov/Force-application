@@ -4,7 +4,9 @@
 
 namespace dynamics
 {
-	FileWriter::FileWriter(const std::string& file_name) : file_name_(file_name) 
+	FileWriter::FileWriter(double end_time, const std::string& file_name)
+		: ParentWriter(end_time)
+		, file_name_(file_name)
 	{
 	}
 
@@ -15,7 +17,7 @@ namespace dynamics
 		out.open(file_name_, std::ios::app); // окрываем файл для записи
 		if (out.is_open())  
 		{
-			out << kin_to_string(kin).c_str();
+			out << KinToString(kin).c_str();
 			out.close();
 		}
 	}

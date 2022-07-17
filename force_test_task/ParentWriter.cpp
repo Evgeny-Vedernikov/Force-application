@@ -1,10 +1,16 @@
 #include "ParentWriter.h"
 #include <iomanip>
 #include <sstream>
+#include <thread>
+
 
 namespace dynamics
 {
-	std::string ParentWriter::kin_to_string(const KinValues& kin) 
+	ParentWriter::ParentWriter(double a_end_time) : end_time(a_end_time), t(0), q(), mtx()
+	{
+	}
+
+	std::string ParentWriter::KinToString(const KinValues& kin) 
 	{
 		std::stringstream s;  // поток для записи
 		std::int8_t prec = 14;
@@ -15,4 +21,18 @@ namespace dynamics
 			<< std::setw(prec+5) << kin.x << std::endl;
 		return s.str();
 	}
+	void ParentWriter::PushQueque(const KinValues& kin)
+	{
+		std::lock_guard<std::mutex> lock(mtx);
+		q.push (kin);
+	}
+	
+	KinValues ParentWriter::PopQueque()
+	{	
+		std::lock_guard<std::mutex> lock(mtx);
+		KinValues result = q.back();
+		q.pop();
+		return 	result;
+	}
+	//std::mutex ParentWriter::mtx;
 }
