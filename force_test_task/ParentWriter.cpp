@@ -39,7 +39,7 @@ namespace dynamics
 		}
 	}
 
-	bool ParentWriter::Sender(const std::string& data_str)
+	bool ParentWriter::Sender(const std::string& data_str) const
 	{
 		return true;
 	}

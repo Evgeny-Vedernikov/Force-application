@@ -17,7 +17,7 @@ namespace dynamics
 
 	// В опциях проекта, в разделе Linker, в пункте Additional Dependancies укажите Ws2_32.lib
 
-	bool NetworkWriter::UDPsender(const KinValues& kin)
+	bool NetworkWriter::Sender(const std::string& data_str) const
 	{
 
 		in_addr ip_to_num;
@@ -65,9 +65,8 @@ namespace dynamics
 			return false;
 		}
 
-		std::string data = KinToString(kin);
 		// отправляем запрос на сервер
-		r = send(sock, data.c_str(), static_cast<int>(data.size()), 0);
+		r = send(sock, data_str.c_str(), static_cast<int>(data_str.size()), 0);
 
 		if (r == SOCKET_ERROR) 
 		{

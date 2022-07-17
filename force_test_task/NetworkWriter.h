@@ -11,7 +11,7 @@ namespace dynamics
 		NetworkWriter(double end_time, const std::string& host, const int16_t port);
 		~NetworkWriter() = default; 
 
-		bool UDPsender(const KinValues& kin);
+		bool Sender(const std::string& data_str) const override;
 
 	protected:
 

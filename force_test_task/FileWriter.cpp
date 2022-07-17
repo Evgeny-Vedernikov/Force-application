@@ -10,16 +10,18 @@ namespace dynamics
 	{
 	}
 
-	void FileWriter::AddLine(const KinValues kin) const
+	bool FileWriter::Sender(const std::string& data_str) const
 
 	{
 		std::ofstream out;  // поток для записи
 		out.open(file_name_, std::ios::app); // окрываем файл для записи
-		if (out.is_open())  
+		bool result = out.is_open();
+		if (result)  
 		{
-			out << KinToString(kin).c_str();
+			out << data_str.c_str();
 			out.close();
 		}
+		return result;
 	}
 } 
 

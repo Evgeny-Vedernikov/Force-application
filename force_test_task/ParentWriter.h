@@ -13,7 +13,7 @@ namespace dynamics
 		static std::string KinToString(const KinValues& kin);
 		void PushQueque(const KinValues& kin);
 		KinValues PopQueque();
-		bool Sender(const std::string& data_str);
+		virtual bool Sender(const std::string& data_str) const;
 
 	protected:
 		void Run();

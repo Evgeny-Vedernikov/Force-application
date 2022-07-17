@@ -11,7 +11,7 @@ namespace dynamics
 		FileWriter(double end_time, const std::string& file_name);
 		~FileWriter() = default;
 
-		void AddLine(const KinValues kin) const;
+		bool Sender(const std::string& data_str) const override;
 
 	private:
 		std::string file_name_;

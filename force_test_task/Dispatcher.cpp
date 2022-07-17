@@ -37,16 +37,5 @@ namespace dynamics
 		return (t - prev_rec_t >= rec_interval) ;
 	}
 	
-	void Dispatcher::ToFile(const KinValues& kin) 
-	{
-		//file_writer_.add_line(kin);
-		
-	}
-
-	void Dispatcher::ToNetwork(const KinValues& kin) 
-	{
-		network_writer_.UDPsender(kin);
-    }
-
 
 } 

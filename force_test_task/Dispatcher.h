@@ -15,14 +15,9 @@ namespace dynamics
 		~Dispatcher() = default;
 
 			static void DataHandler(Dispatcher& v, const KinValues& kin, bool zero_iter);
-			void ToFile(const KinValues& kin);
-			void ToNetwork( const KinValues& kin);
 			bool ShouldWrite(double t, double prev_time, double rec_interval);
 
 	private:
-		//std::string host_;
-		//int16_t port_;
-		
 		double to_file_interval_;
 		double to_network_interval_;
 		double prev_file_time_;
