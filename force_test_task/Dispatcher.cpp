@@ -18,18 +18,23 @@ namespace dynamics
 
 	void Dispatcher::DataHandler(Dispatcher& v, const KinValues& kin, bool write_first_call)
 	{
-		if (v.ShouldWrite(kin.t, v.prev_file_time_, v.to_file_interval_) || write_first_call)
+		//if (v.ShouldWrite(kin.t, v.prev_file_time_, v.to_file_interval_) || write_first_call)
 		{
-			//v.ToFile(kin);
 			v.file_writer_.PushQueque(kin);
 ;			v.prev_file_time_ = kin.t;
 		}
 
-		if (v.ShouldWrite(kin.t, v.prev_network_time_, v.to_network_interval_) || write_first_call)
+		//if (v.ShouldWrite(kin.t, v.prev_network_time_, v.to_network_interval_) || write_first_call)
 		{	
-			//v.ToNetwork(kin);
 			v.network_writer_.PushQueque(kin);
 			v.prev_network_time_ = kin.t;
+		}
+
+		if (write_first_call) 
+		{
+			v.network_writer_.CreateThread();
+			v.file_writer_.CreateThread();
+
 		}
 	}
 	bool Dispatcher::ShouldWrite(double t, double prev_rec_t, double rec_interval)

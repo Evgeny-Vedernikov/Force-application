@@ -3,7 +3,6 @@
 #include <sstream>
 #include <thread>
 
-
 namespace dynamics
 {
 	ParentWriter::ParentWriter(double a_end_time) : cur_time(0), end_time(a_end_time), t(0), q(), mtx()
@@ -21,11 +20,13 @@ namespace dynamics
 			<< std::setw(prec+5) << kin.x << std::endl;
 		return s.str();
 	}
+
 	void ParentWriter::PushQueque(const KinValues& kin)
 	{
 		std::lock_guard<std::mutex> lock(mtx);
 		q.push (kin);
 	}
+
 	void ParentWriter::Run ()
 	{
 		while (cur_time <= end_time )
@@ -51,5 +52,11 @@ namespace dynamics
 		q.pop();
 		return 	result;
 	}
-	//std::mutex ParentWriter::mtx;
+
+	void ParentWriter::CreateThread()
+	{
+		std::thread t([this]() {Run(); });
+		t.detach();
+
+	}
 }

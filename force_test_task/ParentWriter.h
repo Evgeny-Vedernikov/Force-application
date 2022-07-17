@@ -14,6 +14,7 @@ namespace dynamics
 		void PushQueque(const KinValues& kin);
 		KinValues PopQueque();
 		virtual bool Sender(const std::string& data_str) const;
+		void CreateThread();
 
 	protected:
 		void Run();
