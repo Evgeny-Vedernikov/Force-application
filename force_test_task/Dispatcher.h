@@ -1,10 +1,11 @@
 #pragma once
-#include "Data.h"
+
 #include <queue>
 #include <string>
+
 namespace dynamics
 {
-
+	struct KinValues;
 	class  MatPoint;
 	class  FileWriter;
 	class  NetworkWriter;
@@ -16,10 +17,12 @@ namespace dynamics
 				   double end_time, double to_file_interval, double to_network_interval);
 		~Dispatcher() = default;
 
-			static void DataHandler(Dispatcher& v, const KinValues& kin, bool zero_iter);
-			bool ShouldWrite(double t, double prev_time, double rec_interval);
+		static void DataHandler(Dispatcher& v, const KinValues& kin, bool zero_iter);
+		bool ShouldWrite(double t, double prev_time, double rec_interval);
+		KinValues Run();
 
 	private:
+		double end_time_;
 		double to_file_interval_;
 		double prev_file_time_;
 		double to_network_interval_;

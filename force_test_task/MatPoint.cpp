@@ -1,9 +1,10 @@
-#include <iostream>
-#include <fstream>
-#include <math.h>
 #include "MatPoint.h"
 #include "Data2File.h"
 #include "Data.h"
+#include <iostream>
+#include <fstream>
+#include <math.h>
+
 namespace dynamics
 {
 	MatPoint::MatPoint(double a, double dt, const KinValues& kin)
