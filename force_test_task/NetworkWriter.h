@@ -1,8 +1,7 @@
 #pragma once
+
 #include "ParentWriter.h"
-#include "Data.h"
-#include <queue>
-#include <string>
+
 namespace dynamics
 {
 	class NetworkWriter : public ParentWriter

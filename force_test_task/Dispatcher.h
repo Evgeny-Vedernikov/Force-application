@@ -16,10 +16,11 @@ namespace dynamics
 		Dispatcher(MatPoint& mat_point, FileWriter& file_writer, NetworkWriter& network_writer,
 				   double end_time, double to_file_interval, double to_network_interval);
 		~Dispatcher() = default;
-
-		static void DataHandler(Dispatcher& v, const KinValues& kin, bool zero_iter);
+			
 		bool ShouldWrite(double t, double prev_time, double rec_interval);
 		KinValues Run();
+
+		static void DataHandler(Dispatcher& v, const KinValues& kin, bool zero_iter);
 
 	private:
 		double end_time_;

@@ -1,6 +1,6 @@
+#include "FileWriter.h"
 #include <iostream>
 #include <fstream>
-#include "FileWriter.h"
 
 namespace dynamics
 {
@@ -11,10 +11,9 @@ namespace dynamics
 	}
 
 	bool FileWriter::Sender(const std::string& data_str) const
-
 	{
-		std::ofstream out;  // поток для записи
-		out.open(file_name_, std::ios::app); // окрываем файл для записи
+		std::ofstream out;
+		out.open(file_name_, std::ios::app);
 		bool result = out.is_open();
 		if (result)  
 		{

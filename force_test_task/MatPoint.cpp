@@ -16,7 +16,7 @@ namespace dynamics
 		kin.x += kin.v * dt_;
 	}
 
-	void MatPoint::Init(Dispatcher& dispatcher, HandlerType handler)
+	void MatPoint::init_callback(Dispatcher& dispatcher, HandlerType handler)
 	{
 		dispatcher_ = &dispatcher;
 		handler_ = handler;

@@ -1,10 +1,8 @@
-#include "Data.h"
 #include "Dispatcher.h"
+#include "Data.h"
 #include "MatPoint.h"
 #include "FileWriter.h"
 #include "NetworkWriter.h"
-#include <iostream>
-#include <fstream>
 
 namespace dynamics
 {
@@ -45,11 +43,15 @@ namespace dynamics
 	KinValues Dispatcher::Run()
 	{
 		KinValues result{0,0,0};
+		
 		std::thread thread_network([this]() {network_writer_.Run(); });
 		std::thread thread_file([this]() {file_writer_.Run(); });
+		
 		mat_point_.TimeRun(end_time_, result);
+		
 		thread_file.join();
 		thread_network.join();
+		
 		return result;
 	}
 }

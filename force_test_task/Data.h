@@ -9,7 +9,7 @@ namespace dynamics
 		double v;
 		double x;
 	};
-	class Dispatcher;
 
+	class Dispatcher;
 	using HandlerType = std::function<void(Dispatcher&, const KinValues&, bool zero_iter)>;
 }

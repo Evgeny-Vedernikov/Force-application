@@ -1,18 +1,17 @@
 #pragma once
+
 #include "Data.h"
 #include "Dispatcher.h"
 
-
 namespace dynamics
 {
-
 	class MatPoint
 	{
 	public:
 		explicit MatPoint(double a, double dt, const KinValues& kin);
 		~MatPoint() = default;
 
-		void Init(Dispatcher& dispatcher, HandlerType handler);
+		void init_callback(Dispatcher& dispatcher, HandlerType handler);
 
 		void iteration(KinValues& kin);
 

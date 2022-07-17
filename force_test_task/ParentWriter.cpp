@@ -6,13 +6,13 @@
 
 namespace dynamics
 {
-	ParentWriter::ParentWriter(double a_end_time) : cur_time(0), end_time(a_end_time), q(), mtx()
+	ParentWriter::ParentWriter(double a_end_time) : end_time(a_end_time), cur_time(0), q(), mtx()
 	{
 	}
 
 	std::string ParentWriter::KinToString(const KinValues& kin) 
 	{
-		std::stringstream s;  // поток для записи
+		std::stringstream s;
 		std::int8_t prec = 14;
 
 		s << std::fixed << std::setprecision(prec) << "t = " 

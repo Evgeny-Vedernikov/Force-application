@@ -4,7 +4,7 @@
 #include "NetworkWriter.h"
 #include <iostream>
 
-void Start()
+void Start(const std::string& out_file, const std::string& host, int16_t port)
 {
     double mass = 50; // кг
     double force_x = 300; // Н
@@ -16,16 +16,12 @@ void Start()
 
     double to_file_interval = 0.1; // с
     double to_network_interval = 1; // с
-    std::string host = "192.168.2.202";
-    int16_t port = 1000;
-    std::string out_file = "out.txt";
     
     dynamics::MatPoint point(force_x / mass, dt, {t0, vel_x_0, coord_x0 });
     dynamics::FileWriter filewriter(end_time, out_file);
     dynamics::NetworkWriter networkwriter(end_time, host, port);
     dynamics::Dispatcher dispatcher(point, filewriter, networkwriter, end_time, to_file_interval - dt / 8, to_network_interval - dt / 8);
-    //dynamics::Dispatcher dispatcher(point, filewriter, networkwriter, end_time, to_file_interval , to_network_interval);
-    point.Init(dispatcher, dynamics::Dispatcher::DataHandler);
+    point.init_callback(dispatcher, dynamics::Dispatcher::DataHandler);
     dynamics::KinValues kin_values = dispatcher.Run();
 
     std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "s = " << kin_values.x - coord_x0;
@@ -34,7 +30,7 @@ void Start()
 int main()
 {
     system("chcp 1251>nul"); // windows-кодировка в консоли
-    Start();
+    Start("out.txt", "192.168.2.202", 1000);
 
     return 0;
 
