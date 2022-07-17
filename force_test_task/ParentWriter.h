@@ -14,11 +14,10 @@ namespace dynamics
 		void PushQueque(const KinValues& kin);
 		KinValues PopQueque();
 		virtual bool Sender(const std::string& data_str) const;
-		void CreateThread();
+		void Run();
 
 	protected:
-		void Run();
-		
+
 		using QueueType = std::queue < KinValues, std::deque<KinValues> >;
 
 		bool WriteFinished();

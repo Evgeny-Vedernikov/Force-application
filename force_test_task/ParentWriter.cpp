@@ -52,11 +52,4 @@ namespace dynamics
 		q.pop();
 		return 	result;
 	}
-
-	void ParentWriter::CreateThread()
-	{
-		std::thread t([this]() {Run(); });
-		t.detach();
-
-	}
 }
