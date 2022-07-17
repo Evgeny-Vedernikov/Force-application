@@ -21,7 +21,6 @@ void Start(const std::string& out_file, const std::string& host, int16_t port)
     dynamics::FileWriter filewriter(end_time, out_file);
     dynamics::NetworkWriter networkwriter(end_time, host, port);
     dynamics::Dispatcher dispatcher(point, filewriter, networkwriter, end_time, to_file_interval - dt / 8, to_network_interval - dt / 8);
-    point.init_callback(dispatcher, dynamics::Dispatcher::DataHandler);
     dynamics::KinValues kin_values = dispatcher.Run();
 
     std::cout << "\nt = " << kin_values.t << "  Vx = " << kin_values.v << "s = " << kin_values.x - coord_x0;
