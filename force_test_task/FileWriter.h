@@ -10,7 +10,7 @@ namespace dynamics
 		FileWriter(double end_time, const std::string& file_name);
 		~FileWriter() = default;
 
-		bool Sender(const std::string& data_str) const override;
+		bool Sender(const std::string& data_str) override;
 
 	private:
 		std::string file_name_;

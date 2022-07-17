@@ -15,7 +15,7 @@ namespace dynamics
 		ParentWriter(double a_end_time);
 		void PushQueque(const KinValues& kin);
 		KinValues PopQueque();
-		virtual bool Sender(const std::string& data_str) const;
+		virtual bool Sender(const std::string& data_str) = 0;
 		void Run();
 
 	protected:

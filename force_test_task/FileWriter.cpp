@@ -10,7 +10,7 @@ namespace dynamics
 	{
 	}
 
-	bool FileWriter::Sender(const std::string& data_str) const
+	bool FileWriter::Sender(const std::string& data_str)
 	{
 		std::ofstream out;
 		out.open(file_name_, std::ios::app);

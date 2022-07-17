@@ -16,7 +16,7 @@ namespace dynamics
 	{
 	}
 
-	bool NetworkWriter::Sender(const std::string& data_str) const
+	bool NetworkWriter::Sender(const std::string& data_str)
 	{
 		in_addr ip_to_num;
 		int r = inet_pton(AF_INET, host_.c_str(), &ip_to_num);
