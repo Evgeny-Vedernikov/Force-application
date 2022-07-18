@@ -16,13 +16,13 @@ namespace dynamics
 	{
 	}
 
-	bool NetworkWriter::Sender(const std::string& data_str)
+	bool NetworkWriter::sender(const std::string& data_str)
 	{
 		in_addr ip_to_num;
 		int r = inet_pton(AF_INET, host_.c_str(), &ip_to_num);
 		if (r < 0)
 		{
-			std::cerr << "Функци inet_pton вернула ненулевой код возврата " << r;
+			std::cerr << "Функция inet_pton вернула ненулевой код возврата " << r;
 			return false;
 		}
 
@@ -37,7 +37,7 @@ namespace dynamics
 		r = WSAStartup(MAKEWORD(2, 2), &wsaData);
 		if (r < 0)
 		{
-			std::cerr << "Функци WSAStartup вернула ненулевой код возврата " << r;
+			std::cerr << "Функция WSAStartup вернула ненулевой код возврата " << r;
 			//std::cerr << WSAGetLastError();
 			return false;
 		}
@@ -45,7 +45,7 @@ namespace dynamics
 		SOCKET sock = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP);
 		if (sock == INVALID_SOCKET)
 		{
-			std::cerr << "Функци socket вернула ненулевой код возврата " << sock;
+			std::cerr << "Функция socket вернула ненулевой код возврата " << sock;
 			closesocket(sock);
 			WSACleanup();
 			return false;
@@ -55,7 +55,7 @@ namespace dynamics
 
 		if (r < 0)
 		{
-			std::cerr << "Функци connect вернула ненулевой код возврата " << r;
+			std::cerr << "Функция connect вернула ненулевой код возврата " << r;
 			closesocket(sock);
 			WSACleanup();
 			return false;
@@ -66,7 +66,7 @@ namespace dynamics
 
 		if (r == SOCKET_ERROR) 
 		{
-			std::cerr << "Функци send вернула ненулевой код возврата " << r;
+			std::cerr << "Функция send вернула ненулевой код возврата " << r;
 			closesocket(sock);
 			WSACleanup();
 			return false;

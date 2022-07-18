@@ -17,10 +17,10 @@ namespace dynamics
 				   double end_time, double to_file_interval, double to_network_interval);
 		~Dispatcher() = default;
 			
-		bool ShouldWrite(double t, double prev_time, double rec_interval);
-		KinValues Run();
+		bool should_write(double t, double prev_time, double rec_interval);
+		KinValues run();
 
-		static void DataHandler(Dispatcher& v, const KinValues& kin, bool zero_iter);
+		static void data_handler(Dispatcher& v, const KinValues& kin, bool zero_iter);
 
 	private:
 		double end_time_;

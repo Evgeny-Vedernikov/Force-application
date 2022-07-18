@@ -10,6 +10,7 @@ namespace dynamics
 		: dt_(dt), a_dt_(a * dt), kin0(kin), dispatcher_(nullptr), handler_(nullptr)
 	{
 	}
+
 	void MatPoint::iteration(KinValues& kin)
 	{
 		kin.v += a_dt_;
@@ -22,7 +23,7 @@ namespace dynamics
 		handler_ = handler;
 	}
 
-	void  MatPoint::TimeRun(double end_time, KinValues& kin) 
+	void  MatPoint::time_run(double end_time, KinValues& kin)
 	{
 		kin = kin0;
 

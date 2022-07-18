@@ -17,37 +17,37 @@ namespace dynamics
 		, file_writer_(file_writer)
 		, network_writer_(network_writer)
 	{
-		mat_point.init_callback(*this, dynamics::Dispatcher::DataHandler);
+		mat_point.init_callback(*this, dynamics::Dispatcher::data_handler);
 	}
 
-	void Dispatcher::DataHandler(Dispatcher& v, const KinValues& kin, bool write_first_call)
+	void Dispatcher::data_handler(Dispatcher& v, const KinValues& kin, bool write_first_call)
 	{
-		if (v.ShouldWrite(kin.t, v.prev_file_time_, v.to_file_interval_) || write_first_call)
+		if (v.should_write(kin.t, v.prev_file_time_, v.to_file_interval_) || write_first_call)
 		{
-			v.file_writer_.PushQueque(kin);
+			v.file_writer_.push_queue(kin);
 ;			v.prev_file_time_ = kin.t;
 		}
 
-		if (v.ShouldWrite(kin.t, v.prev_network_time_, v.to_network_interval_) || write_first_call)
+		if (v.should_write(kin.t, v.prev_network_time_, v.to_network_interval_) || write_first_call)
 		{	
-			v.network_writer_.PushQueque(kin);
+			v.network_writer_.push_queue(kin);
 			v.prev_network_time_ = kin.t;
 		}
 
 	}
-	bool Dispatcher::ShouldWrite(double t, double prev_rec_t, double rec_interval)
+	bool Dispatcher::should_write(double t, double prev_rec_t, double rec_interval)
 	{
 		return (t - prev_rec_t >= rec_interval) ;
 	}
 
-	KinValues Dispatcher::Run()
+	KinValues Dispatcher::run()
 	{
 		KinValues result{0,0,0};
 		
-		std::thread thread_network([this]() {network_writer_.Run(); });
-		std::thread thread_file([this]() {file_writer_.Run(); });
+		std::thread thread_network([this]() {network_writer_.run(); });
+		std::thread thread_file([this]() {file_writer_.run(); });
 		
-		mat_point_.TimeRun(end_time_, result);
+		mat_point_.time_run(end_time_, result);
 		
 		thread_file.join();
 		thread_network.join();

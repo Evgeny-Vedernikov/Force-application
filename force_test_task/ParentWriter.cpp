@@ -10,10 +10,10 @@ namespace dynamics
 	{
 	}
 
-	std::string ParentWriter::KinToString(const KinValues& kin) 
+	std::string ParentWriter::kin_to_string(const KinValues& kin)
 	{
 		std::stringstream s;
-		std::int8_t prec = 14;
+		std::int8_t prec = 9;
 
 		s << std::fixed << std::setprecision(prec) << "t = " 
 			<< std::setw(prec+3) << kin.t << "    V = " 
@@ -22,20 +22,20 @@ namespace dynamics
 		return s.str();
 	}
 
-	void ParentWriter::PushQueque(const KinValues& kin)
+	void ParentWriter::push_queue(const KinValues& kin)
 	{
 		std::lock_guard<std::mutex> lock(mtx);
 		q.push (kin);
 	}
 
-	void ParentWriter::Run ()
+	void ParentWriter::run ()
 	{
 		while (cur_time <= end_time )
 		{
 			if (!q.empty())
 			{
-				KinValues kin_data = PopQueque();
-				Sender(KinToString(kin_data));
+				KinValues kin_data = pop_queue();
+				sender(kin_to_string(kin_data));
 				cur_time = kin_data.t;
 			}
 			else
@@ -45,7 +45,7 @@ namespace dynamics
 		}
 	}
 
-	KinValues ParentWriter::PopQueque()
+	KinValues ParentWriter::pop_queue()
 	{	
 		KinValues result;
 		{

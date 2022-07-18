@@ -15,7 +15,7 @@ namespace dynamics
 
 		void iteration(KinValues& kin);
 
-		void TimeRun(double end_time, KinValues& kin);
+		void time_run(double end_time, KinValues& kin);
 
 	private:
 		double dt_;
