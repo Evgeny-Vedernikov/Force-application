@@ -14,7 +14,7 @@ namespace dynamics
 	void MatPoint::iteration(KinValues& kin)
 	{
 		kin.v += a_dt_;
-		kin.x += kin.v * dt_;
+		kin.s += kin.v * dt_;
 	}
 
 	void MatPoint::init_callback(Dispatcher& dispatcher, HandlerType handler)

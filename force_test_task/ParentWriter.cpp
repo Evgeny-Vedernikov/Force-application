@@ -6,19 +6,19 @@
 
 namespace dynamics
 {
-	ParentWriter::ParentWriter(double a_end_time) : end_time(a_end_time), cur_time(0), q(), mtx()
+	ParentWriter::ParentWriter(double arg_end_time) : end_time(arg_end_time), cur_time(0), q(), mtx()
 	{
 	}
 
 	std::string ParentWriter::kin_to_string(const KinValues& kin)
 	{
 		std::stringstream s;
-		std::int8_t prec = 9;
+		std::int8_t precision = 6;
 
-		s << std::fixed << std::setprecision(prec) << "t = " 
-			<< std::setw(prec+3) << kin.t << "    V = " 
-			<< std::setw(prec+4) << kin.v << "    x = "
-			<< std::setw(prec+5) << kin.x << std::endl;
+		s << std::fixed << std::setprecision(precision) << "t = "
+			<< std::setw(precision+3) << kin.t << "    V = "
+			<< std::setw(precision+4) << kin.v << "    s = "
+			<< std::setw(precision+5) << kin.s << std::endl;
 		return s.str();
 	}
 

@@ -7,7 +7,7 @@ namespace dynamics
 	{
 		double t;
 		double v;
-		double x;
+		double s;
 	};
 
 	class Dispatcher;
