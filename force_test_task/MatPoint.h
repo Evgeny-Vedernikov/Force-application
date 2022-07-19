@@ -11,7 +11,7 @@ namespace dynamics
 		explicit MatPoint(double a, double dt, const KinValues& kin);
 		~MatPoint() = default;
 
-		void init_callback(Dispatcher& dispatcher, HandlerType handler);
+		void init_callback_data(Dispatcher& dispatcher, HandlerType handler);
 
 		void iteration(KinValues& kin);
 

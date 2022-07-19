@@ -17,7 +17,7 @@ namespace dynamics
 		, file_writer_(file_writer)
 		, network_writer_(network_writer)
 	{
-		mat_point.init_callback(*this, dynamics::Dispatcher::data_handler);
+		mat_point.init_callback_data(*this, dynamics::Dispatcher::data_handler);
 	}
 
 	void Dispatcher::data_handler(Dispatcher& v, const KinValues& kin, bool write_first_call)

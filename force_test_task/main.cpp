@@ -31,7 +31,7 @@ int main()
 {
     system("chcp 1251>nul"); // windows-кодировка в консоли
 
-    start("out.txt", "192.168.0.13", 1000);
+    start("out.txt", "127.0.0.5", 1000);
 
     return 0;
 

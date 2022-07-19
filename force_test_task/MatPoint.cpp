@@ -17,7 +17,7 @@ namespace dynamics
 		kin.s += kin.v * dt_;
 	}
 
-	void MatPoint::init_callback(Dispatcher& dispatcher, HandlerType handler)
+	void MatPoint::init_callback_data(Dispatcher& dispatcher, HandlerType handler)
 	{
 		dispatcher_ = &dispatcher;
 		handler_ = handler;
@@ -33,7 +33,14 @@ namespace dynamics
 		{
 			kin.t += dt_;
 			iteration (kin);
-			handler_(*dispatcher_, kin, false);
+			if (handler_ != nullptr)
+			{
+				handler_(*dispatcher_, kin, false);
+			}
+			else
+			{
+				std::cerr << "handler_ = nullptr";
+			}
 		}
 	}
 } 
